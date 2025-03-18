@@ -26,4 +26,6 @@ urlpatterns = [
     #posts/10/
     path('posts/new/', views.new), # 데이터 입력하는 공간
     path('posts/create/', views.create), #데이터 저장하는 공간
+    path('posts/<int:id>/delete/', views.delete),
+    
 ]

@@ -31,7 +31,12 @@ def create(request):
     post.title = title # Post라는 모델에 있는 'title'이라는 컬럼에
                        # 우리가 받은 title이라는 변수를 할당해준다
     post.content = content
-    post.save()
+    post.save() # id를 생성하기 위해 save를 해야한다
 
     # return redirect('/index/')
     return redirect(f'/posts/{post.id}/')
+
+def delete(request, id):
+    post = Post.objects.get(id = id)
+    post.delete()
+    return redirect('/index/')
