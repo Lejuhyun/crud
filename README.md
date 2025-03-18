@@ -32,13 +32,12 @@ django-admin startapp posts
 ## 2.CRUD
 - 의미: **Create(생성), Read(읽기), Update(수정), Delete(삭제)**의 약자로, 데이터베이스에서 데이터를 관리하는 기본적인 기능
 
-- modeling (models.py)
+- **modeling** (models.py)
 ```shell
 from django.db import models
 #Django의 데이터베이스 관련 기능을 제공하는 models 모듈을 가져옴
 class Post(models.Model): 
 #models.Model을 상속받아 Django에서 데이터베이스 테이블을 자동으로 생성
-#models.Model을 상속하면 해당 클래스가 데이터베이스 테이블과 연결
     title = models.CharField(max_length=100) 
     # CharField: 문자열, 최대 255자
     content = models.TextField()
@@ -56,4 +55,18 @@ python manage.py makemigrations
 ```shell
 # DB에 반영
 python manage.py migrate
+```
+
+- **create super user**
+```shell
+python manage.py createsuperuser
+```
+
+- 관리자페이지에 모델 등록(`admin.py`)
+```python
+from django.contrib import admin
+from .models import Post #현재 폴더에서 models라는 파일에 있는 Post 접근
+
+# Register your models here.
+admin.site.register(Post) #관리자 사이트에 Post라는 클래스를 등록하기
 ```
