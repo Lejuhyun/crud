@@ -19,9 +19,11 @@ from django.urls import path
 from posts import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('index/', views.index),
-    path('posts/<int:id>/', views.detail),
+    path('admin/', admin.site.urls), # Read All
+    path('index/', views.index), # Read(1)
+    path('posts/<int:id>/', views.detail), # Create
     #posts/1/
     #posts/10/
+    path('posts/new/', views.new), # 데이터 입력하는 공간
+    path('posts/create/', views.create), #데이터 저장하는 공간
 ]
