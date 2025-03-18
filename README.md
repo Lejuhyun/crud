@@ -62,11 +62,21 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-- 관리자페이지에 모델 등록(`admin.py`)
+- 관리자페이지(admin)에 모델 등록(`admin.py`)
 ```python
 from django.contrib import admin
 from .models import Post #현재 폴더에서 models라는 파일에 있는 Post 접근
 
 # Register your models here.
 admin.site.register(Post) #관리자 사이트에 Post라는 클래스를 등록하기
+```
+
+- Read
+```python
+def index(request):
+    posts = Post.objects.all() #Post라는 클래스에 모든 데이터를 가져오는 함수
+    context = {
+        'posts': posts,
+    }
+    return render(request, 'index.html', context)
 ```
