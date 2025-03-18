@@ -17,4 +17,6 @@ django-admin startproject crud . #내가 있는 장소에 'crud'라는 프로젝
 django-admin startapp posts
 ```
 
-- 앱 등록(crud안에 있는 settings.py에서 installed_apps에 앱 등록하기)
+- 앱 등록: crud(프로젝트)안에 있는 settings.py에서 installed_apps에 앱 등록하기
+
+- post(앱) 안에 들어있는 views를 url.py에 불러오기 : from posts import views
