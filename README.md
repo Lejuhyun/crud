@@ -71,7 +71,8 @@ from .models import Post #현재 폴더에서 models라는 파일에 있는 Post
 admin.site.register(Post) #관리자 사이트에 Post라는 클래스를 등록하기
 ```
 
-- Read
+- # Read
+ 1. views.py에서 데이터 가져오기
 ```python
 def index(request):
     posts = Post.objects.all() #Post라는 클래스에 모든 데이터를 가져오는 함수
@@ -79,4 +80,15 @@ def index(request):
         'posts': posts,
     }
     return render(request, 'index.html', context)
+```
+2. index.html에서 posts에 있는 데이터들을 반복문을 통해 출력
+```html
+<body>
+    <h1>index</h1>
+    {% for post in posts%}
+        <p>{{post.title}}</p>
+        <p>{{post.content}}</p>
+        <hr>
+    {% endfor %}
+</body>
 ```
